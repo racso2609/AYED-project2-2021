@@ -12,7 +12,7 @@ using namespace std;
 
 struct Client{
     string name;
-    int  pacience;
+    int  pacience,priority;
 };
 void ReverseQueue(PriorityQueue<Client> *menu){
     if(!menu->isEmpty()){
@@ -30,8 +30,7 @@ void ReverseQueue(PriorityQueue<Client> *menu){
 void printQueue(PriorityQueue<Client> *menu){
     if(!menu->isEmpty()){
         Client temp = menu->head()->info;
-        cout<<menu->sizes()<<endl;
-        cout<<" name: "<<temp.name<<" pacience: "<<temp.pacience<<endl;
+        cout<<" name: "<<temp.name<<" pacience: "<<temp.pacience<<" Priority: "<<temp.priority<<endl;
         if(menu->sizes() != 1){
             menu->dequeue();
             printQueue(menu);
@@ -69,11 +68,12 @@ int main(){
         if(char(file) == '+'){
             int peopleCount;
             cin>>peopleCount;
-            cout<<peopleCount<<endl;
             for(int i = 0; i<peopleCount;i++){
                 Client person;
                 int priority;
                 cin>>person.name>>priority>>person.pacience;
+                person.priority = priority;
+                cout<<"Person"<<i<<"  "<<priority<<endl;
                 row->enqueue(person, priority);
             }
 
@@ -82,7 +82,7 @@ int main(){
 
     }
     printClient(row);
-    printClient(row);
+    //printClient(row);
     //printMenu(allMenu);
     delete allMenu;
     delete row;

@@ -33,11 +33,12 @@ public:
 		else {
 			Node* temp = first;
 
-			while (temp->next != NULL && temp->next->priority <= priority)
+			while (temp->next != NULL && temp->next->priority >= priority)
 				temp = temp->next;
 
 			if (temp->next == NULL) {
-				if (temp->priority > priority) {
+				//cout<<temp->priority<< priority<<endl;
+				if (temp->priority < priority) {
 					nodes->next = temp;
 					first = nodes;
 				} else {
@@ -45,7 +46,7 @@ public:
 					last = nodes;
 				}
 			} else {
-				if (temp->priority > priority) {
+				if (temp->priority < priority) {
 					nodes->next = temp;
 					first = nodes;
 				} else {
