@@ -1,0 +1,13 @@
+2
+2
+Plato1 40
+Plato2 50
+1
+Plato3 25
+-
++1
+Persona1 0 10
++3
+Persona2 0 10
+Persona3 0 1
+Persona4 1 1
