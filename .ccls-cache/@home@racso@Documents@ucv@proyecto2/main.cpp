@@ -42,6 +42,11 @@ void printQueue(PriorityQueue<Client> *menu){
 
 }
 
+void printClient(PriorityQueue<Client> *menu){
+    printQueue(menu);
+    ReverseQueue(menu);
+}
+
 int main(){
 
     srand(42);
@@ -76,8 +81,8 @@ int main(){
 
 
     }
-    printQueue(row);
-    printQueue(row);
+    printClient(row);
+    printClient(row);
     //printMenu(allMenu);
     delete allMenu;
     delete row;
