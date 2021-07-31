@@ -1,0 +1,25 @@
+3
+2
+Plato1 20
+Plato2 20
+4
+Plato3 20
+Plato4 20
+Plato5 20
+Plato5 20
+1
+Plato6 20
+-
++
+3
+Peep1 0 10
+Peep2 0 10
+Peep3 0 10
+-
++
+2
+Peep4 0 10
+Peep5 0 1
++2
+Peep6 1 10
+Peep7 1 10
