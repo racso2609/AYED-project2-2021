@@ -58,7 +58,7 @@ void MenuDecission(Client &client, Menu menus,int &actualTime){
     int prepareTime=0;
     while(!client.clientMenu.dishes->isEmpty()){
         int decission = rand()%2;
-        //cout<<decission<<endl;
+        cout<<decission<<endl;
         if(decission){
             client.chosenDishes.push(client.clientMenu.dishes->top->info);
             prepareTime+=client.chosenDishes.top->info.time;
@@ -126,54 +126,33 @@ int main(){
             int peopleCount;
             cin>>peopleCount;
             for(int i = 0; i<peopleCount;i++){
+                 if(allMenu->isEmpty()){
+                    while(!returnedMenu->isEmpty()){
+                        Menu fillMenu =returnedMenu->head()->info;
+                        allMenu->push(fillMenu);
+                        returnedMenu->dequeue();
+                    }
+
+                }
                 Client person;
                 int priority;
                 cin>>person.name>>priority>>person.pacience;
                 person.priority = priority;
                 person.entryTime = hourInMinutes-1;
+                Menu menu = allMenu->top->info;
+
+                processSolution(person, hourInMinutes, menu);
+                cout<<"proceesSolution succesfully"<<endl;
+                // returnedMenu->enqueue(menu,0);
+                // cout<<"proceesSolution enquee menu"<<endl;
+
                 row->enqueue(person, priority);
-            }
-            while(!row->isEmpty()){
-                if(allMenu->isEmpty()){
-                    while(!returnedMenu->isEmpty()){
-                        Menu fillMenu =returnedMenu->head()->info;
-                        allMenu->push(fillMenu);
-                        returnedMenu->dequeue();
-                        //cout<<"returned Menu"<<endl;
-                    }
-
-                }else{
-
-                    Client person= row->head()->info;
-                    Menu menu = allMenu->top->info;
-
-                    processSolution(person, hourInMinutes, menu);
-                    returnedMenu->enqueue(menu,0);
-                    //printPerson(person);
-
-
-                    string toPrint =  "[" +
-                        to_string(person.exitTime/60)+" : "
-                        +to_string(person.exitTime%60)+"] "
-                        + person.name
-                        +" Priority: "  
-                        + to_string(person.priority)
-                        + printDishes(person);
-                    
-
-                    exit->enqueue(toPrint, 0);
-                    
-
-
-
-                    row->dequeue();
+                if(!allMenu->isEmpty()){
                     allMenu->pop();
+                cout<<"proceesSolution pop menu"<<endl;
                 }
             }
-
-
         }
-
 
     }
 
